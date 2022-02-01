@@ -43,6 +43,21 @@ var functions = {
       }
     );
   },
+  getInfo: (req, res) => {
+    if (
+      req.headers.authorization &&
+      req.headers.authorization.split(" ")[0] === "Bearer"
+    ) {
+      let token = req.headers.authorization.split(" ")[1];
+      var decodedtoken = jwt.decode(token, config.secret);
+      return res.json({
+        success: true,
+        message: `Token owner : ${decodedtoken.name}`,
+      });
+    } else {
+      return res.json({ success: false, message: "No Headers" });
+    }
+  },
 };
 
 module.exports = functions;

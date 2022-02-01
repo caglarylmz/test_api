@@ -8,7 +8,12 @@ router.get("/", (req, res) => {
 
 //@desc Adding new user
 //@route POST /adduser
-router.post("/adduser", actions.addNew);
-router.post("/authenticate", actions.authenticate);
+router.post("/register", actions.addNew);
+//@desc Authenticate user
+//@route POST /authenticate
+router.post("/login", actions.authenticate);
+//@desc Get info on a user
+//@route GET /getinfo
+router.get("/getinfo", actions.getInfo);
 
 module.exports = router;
