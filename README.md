@@ -14,7 +14,11 @@ router.post("/login", actions.authenticate);
 //@route GET /getinfo
 router.get("/getinfo", actions.getInfo);
 
+Read Logs: heroku logs --tail
+
+# Fix for Problem heroku .env file
+
 enter bash : heroku run bash -a restapifortest
 create env file : touch .env
-write in file : echo "MONGOOSE_URI='mongodb+srv://caglarylmz:csylmz82@oriontech.ji21k.mongodb.net/test-api?retryWrites=true&w=majority'" "SECRET_KEY='secret'" >> .env
+write in file : echo "MONGOOSE_URI='mongodb+srv://username:password@oriontech.ji21k.mongodb.net/test-api?retryWrites=true&w=majority'" "SECRET_KEY='secret'" >> .env
 see file : cat .env
