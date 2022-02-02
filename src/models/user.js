@@ -3,7 +3,11 @@ var Schema = mongoose.Schema;
 var bcrypt = require("bcrypt");
 
 var userSchema = new Schema({
-  name: {
+  fullname: {
+    type: String,
+    require: true,
+  },
+  email: {
     type: String,
     require: true,
   },
