@@ -13,3 +13,8 @@ router.post("/login", actions.authenticate);
 //@desc Get info on a user
 //@route GET /getinfo
 router.get("/getinfo", actions.getInfo);
+
+enter bash : heroku run bash -a restapifortest
+create env file : touch .env
+write in file : echo "MONGOOSE_URI='mongodb+srv://caglarylmz:csylmz82@oriontech.ji21k.mongodb.net/test-api?retryWrites=true&w=majority'" "SECRET_KEY='secret'" >> .env
+see file : cat .env
