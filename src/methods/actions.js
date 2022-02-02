@@ -4,11 +4,12 @@ require("dotenv").config();
 
 var functions = {
   addNew: (req, res, next) => {
-    if (!req.body.name || !req.body.password) {
+    if (!req.body.fullname || !req.body.email || !req.body.password) {
       res.json({ success: false, message: "Enter all fields" });
     } else {
       var newUser = User({
-        name: req.body.name,
+        fullname: req.body.fullname,
+        email: req.body.email,
         password: req.body.password,
       });
       newUser.save((err, newUser) => {
