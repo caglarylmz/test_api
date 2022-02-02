@@ -1,5 +1,6 @@
 var User = require("../models/user");
 var jwt = require("jwt-simple");
+require("dotenv").config();
 
 var functions = {
   addNew: (req, res, next) => {
