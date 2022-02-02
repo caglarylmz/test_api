@@ -36,7 +36,7 @@ var functions = {
         else
           user.comparePassword(req.body.password, function (err, isMatch) {
             if (isMatch && !err) {
-              let token = jwt.encode(user, config.secret);
+              let token = jwt.encode(user, process.env.SECRET_KEY);
               res.json({ success: true, token: token });
             } else return res.status(403).send({ success: false, message: "Authentication failed, wrong password" });
           });
@@ -49,7 +49,7 @@ var functions = {
       req.headers.authorization.split(" ")[0] === "Bearer"
     ) {
       let token = req.headers.authorization.split(" ")[1];
-      var decodedtoken = jwt.decode(token, config.secret);
+      var decodedtoken = jwt.decode(token, process.env.SECRET_KEY);
       return res.json({
         success: true,
         message: `Token owner : ${decodedtoken.name}`,
