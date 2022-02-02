@@ -2,6 +2,8 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 var bcrypt = require("bcrypt");
 
+const UserRole = { admin: "admin", user: "user" };
+
 var userSchema = new Schema({
   fullname: {
     type: String,
@@ -15,12 +17,18 @@ var userSchema = new Schema({
     type: String,
     require: true,
   },
+  role: {
+    type: String,
+    enum: [UserRole.admin, UserRole.user],
+    default: UserRole.user,
+  },
 });
 
 //@Before Save bcrypt password
 //@arrow func kapsamı değiştiğinden this ile ulaşamayız. Bu yüzden function kullandık
 userSchema.pre("save", function (next) {
   var user = this;
+
   if (this.isModified("password") || this.isNew) {
     bcrypt.genSalt(10, (err, saltedPassword) => {
       if (err) return next(err);

@@ -7,6 +7,14 @@ https://restapifortest.herokuapp.com/
 # Register User
 
 @route POST /adduser
+
+    USER{
+    fullname:String
+    email:String
+    password:String
+    role:UserRole[admin,user]:default=>user
+    }
+
 //@desc Authenticate user
 //@route POST /authenticate
 router.post("/login", actions.authenticate);
